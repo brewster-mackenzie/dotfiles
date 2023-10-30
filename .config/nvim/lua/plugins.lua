@@ -16,6 +16,15 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/vim-vsnip'
 
+  -- Git plugins
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+  use 'tpope/vim-sleuth'
+  use 'lewis6991/gitsigns.nvim' 
+
+  -- Whichkey
+  use 'folke/which-key.nvim'
+
   -- file tree
   use {
 	  'nvim-tree/nvim-tree.lua',
@@ -24,6 +33,42 @@ return require('packer').startup(function(use)
 	  },
   }
 
+  -- treesitter
+  use {
+	  'nvim-treesitter/nvim-treesitter',
+	  run = function()
+		  local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+		  ts_update()
+		end,
+  }
+
+  -- Telescope fuzzy search
+  use {
+	'nvim-telescope/telescope.nvim',
+	tag = '0.1.4',
+	requires = { { 'nvim-lua/plenary.nvim' } }
+  }
+
+
   -- DAP debugging plugin
   use 'mfussenegger/nvim-dap'
+  use { 
+	  'rcarriga/nvim-dap-ui', 
+	  requires = { 
+		  'mfussenegger/nvim-dap' 
+	  }, 
+  }
+
+  -- UI/UX
+  use {
+	  'nvim-lualine/lualine.nvim',
+	  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
+
+  use {
+	  'akinsho/bufferline.nvim',
+	  requires = { 'nvim-tree/nvim-web-devicons' },
+  }
+
+  use 'folke/tokyonight.nvim'
 end)

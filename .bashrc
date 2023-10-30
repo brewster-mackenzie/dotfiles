@@ -120,3 +120,8 @@ if ! shopt -oq posix; then
   fi
 fi
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+if command -v nvim &> /dev/null
+then	
+  alias vim='nvim'
+fi
