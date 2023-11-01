@@ -125,3 +125,7 @@ if command -v nvim &> /dev/null
 then	
   alias vim='nvim'
 fi
+
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
