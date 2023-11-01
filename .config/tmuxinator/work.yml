@@ -53,3 +53,7 @@ windows:
       root: ~/repos/nimbus-sre
       panes:
         - nvim
+  - dotfiles:
+      root: ~/.config
+      panes:
+        - nvim +NvimTreeOpen
