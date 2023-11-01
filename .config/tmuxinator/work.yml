@@ -1,6 +1,6 @@
 # /home/bmackenz/.config/tmuxinator/terraform.yml
 
-name: terraform
+name: work
 root: ~/source/nimbus-sre
 
 # Optional tmux socket
@@ -45,13 +45,11 @@ root: ~/source/nimbus-sre
 # attach: false
 
 windows:
-  - code:
-      root: ~/repos/nimbus-sre
-      panes:
-        - nvim
-  - server: bundle exec rails s
-  - logs: tail -f log/development.log
   - notes:
       root: ~/repos/grimoire
+      panes:
+        - nvim
+  - code:
+      root: ~/repos/nimbus-sre
       panes:
         - nvim

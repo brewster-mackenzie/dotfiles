@@ -6,10 +6,10 @@ sudo apt install build-essential
 # Lua
 if ! command -v lua-language-server &> /dev/null
 then
-  version="3.7.0"
-  relname="lua-language-server-$version-linux-x64"
+  relver="3.7.0"
+  relname="lua-language-server-$relver-linux-x64"
 
-  wget https://github.com/LuaLS/lua-language-server/releases/download/$version/$relname.tar.gz
+  wget https://github.com/LuaLS/lua-language-server/releases/download/$relver/$relname.tar.gz
 
   mkdir ./$relname
   tar -xvf $relname.tar.gz -C $relname
