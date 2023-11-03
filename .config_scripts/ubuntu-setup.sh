@@ -1,3 +1,5 @@
+## TODO add ripgrep
+
 check_command() {
   echo -n "$1 - "; if command -v $2 &> /dev/null; then echo 'Installed'; else echo 'Not Installed'; fi
 }
@@ -71,11 +73,18 @@ then
   sudo ln -s /usr/share/$relname/zk /bin/zk
 fi
 
+# ripgrep
+if ! command -v ripgrep &> /dev/null
+then
+  sudo apt-get install -y ripgrep
+fi
+
 # ALL DONE - check commands
 check_command PowerShell pwsh
 check_command NeoVim nvim
 check_command Tmux tmux 
 check_command Tmuxinator tmuxinator
 check_command ZK zk
+check_command Ripgrep rg
 popd
 rm -r $tmpdir

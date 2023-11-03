@@ -1,3 +1,4 @@
+# update and upgrade
 sudo apt update && sudo apt upgrade && sudo apt install gpg
 
 # GCC etc.

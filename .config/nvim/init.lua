@@ -8,9 +8,11 @@ require('syntax-highlighting')
 require('fuzzy-finder')
 require('status-bar')
 require('tabs')
+require('ui')
+require('notes')
 
 -- LSP
-require('lsp/marksman')
+-- require('lsp/marksman')
 require('lsp/lua-language-server')
 require('lsp/tsserver')
 require('lsp/omnisharp')

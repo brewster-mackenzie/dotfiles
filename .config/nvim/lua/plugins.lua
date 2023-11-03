@@ -72,4 +72,21 @@ return require('packer').startup(function(use)
 
   use 'folke/tokyonight.nvim'
   use 'vimpostor/vim-tpipeline'
+  --use {
+--	  'folke/noice.nvim',
+--	  requires = {
+--		  'MunifTanjim/nui.nvim',
+--		  'rcarriga/nvim-notify'
+--	  }
+ -- }
+
+  -- Note taking
+  use { 
+
+	  'renerocksai/telekasten.nvim',
+	  requires = {
+		  'renerocksai/calendar-vim'
+	  }
+  }
+
 end)
