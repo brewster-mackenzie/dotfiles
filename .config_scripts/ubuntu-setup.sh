@@ -3,6 +3,9 @@
 check_command() {
   echo -n "$1 - "; if command -v $2 &> /dev/null; then echo 'Installed'; else echo 'Not Installed'; fi
 }
+check_path() {
+  echo -n "$1 - "; if [ -e "$2" ]; then echo 'Installed'; echo 'Not Found'; fi
+}
 
 tmpdir="/tmp/inst$RANDOM"
 mkdir $tmpdir
@@ -61,6 +64,12 @@ then
   sudo apt-get install -y tmuxinator
 fi
 
+# TPM (Tmux Plugin Manager)
+if [ ! -e ~/.tmux/plugins/tpm ]
+then 
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 # ZK
 if ! command -v zk &> /dev/null
 then
@@ -86,5 +95,6 @@ check_command Tmux tmux
 check_command Tmuxinator tmuxinator
 check_command ZK zk
 check_command Ripgrep rg
+check_path TPM ~/.tmux/plugins/tpm
 popd
 rm -r $tmpdir

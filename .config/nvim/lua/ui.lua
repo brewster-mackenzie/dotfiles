@@ -1,4 +1,6 @@
 vim.cmd[[set cmdheight=0]]
+vim.cmd[[set number relativenumber signcolumn=yes]]
+
 
 --[[
 require("noice").setup({

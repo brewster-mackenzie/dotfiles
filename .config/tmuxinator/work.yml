@@ -1,7 +1,7 @@
 # /home/bmackenz/.config/tmuxinator/terraform.yml
 
 name: work
-root: ~/source/nimbus-sre
+root: ~/repos/nimbus-sre
 
 # Optional tmux socket
 # socket_name: foo

@@ -27,10 +27,10 @@ map('n', '<leader>fg', [[:lua require'telescope.builtin'.live_grep()<CR>]], cmd_
 
 -- Telekasten notes
 
-function ZkNote(templ)
+function ZkNote(name)
 	input = vim.fn.input("Title: ")
 
-	vim.cmd.normal(vim.api.nvim_replace_termcodes(':Telekasten new_templated_note<CR>' .. input .. '<CR>' .. templ .. '.md<CR>' , true, true, true))
+	vim.cmd.normal(vim.api.nvim_replace_termcodes(':Telekasten new_templated_note<CR>' .. input .. '<CR>' .. name .. '.md<CR>' , true, true, true))
 end
 
 map("n", "<leader>z", [[:Telekasten panel<CR>]],cmd_options)

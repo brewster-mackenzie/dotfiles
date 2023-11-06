@@ -134,3 +134,4 @@ nginx-enable-site() {
   site=$(sed -r '/\.conf$/b; s/^(.+)$/\1\.conf/g' <<< $1)
   sudo ln -s /etc/nginx/sites-available/$site /etc/nginx/sites-enabled/$site
 }
+export EDITOR=nvim

@@ -71,7 +71,7 @@ return require('packer').startup(function(use)
   }
 
   use 'folke/tokyonight.nvim'
-  use 'vimpostor/vim-tpipeline'
+--  use 'vimpostor/vim-tpipeline'
   --use {
 --	  'folke/noice.nvim',
 --	  requires = {
