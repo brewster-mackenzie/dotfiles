@@ -88,6 +88,22 @@ then
   sudo apt-get install -y ripgrep
 fi
 
+# terraform
+if ! command -v terraform &> /dev/null
+then
+  sudo apt-get install -y terraform
+fi
+
+# terragrunt
+if ! command -v terragrunt &> /dev/null
+then
+  relver="0.53.2"
+  relname="terragrunt_linux_amd64"
+  wget "https://github.com/gruntwork-io/terragrunt/releases/download/v$relver/$relname" 
+  sudo mv $relname /usr/bin/terragrunt
+  sudo chmod +x /usr/bin/terragrunt
+fi
+
 # ALL DONE - check commands
 check_command PowerShell pwsh
 check_command NeoVim nvim
@@ -95,6 +111,8 @@ check_command Tmux tmux
 check_command Tmuxinator tmuxinator
 check_command ZK zk
 check_command Ripgrep rg
+check_command Terraform terraform
+check_command Terragrunt terragrunt
 check_path TPM ~/.tmux/plugins/tpm
 popd
 rm -r $tmpdir
