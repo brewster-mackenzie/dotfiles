@@ -71,7 +71,18 @@ return require('packer').startup(function(use)
   }
 
   use 'folke/tokyonight.nvim'
---  use 'vimpostor/vim-tpipeline'
+  --use 'vimpostor/vim-tpipeline'
+
+  -- Dashboard
+  use {
+	'nvimdev/dashboard-nvim',
+	event = 'VimEnter',
+	config = function() 
+		require('dashboard').setup{}
+	end,
+	requires = {'nvim-tree/nvim-web-devicons'}
+  }
+
   --use {
 --	  'folke/noice.nvim',
 --	  requires = {

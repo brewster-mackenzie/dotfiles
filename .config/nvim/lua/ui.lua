@@ -2,6 +2,11 @@ vim.cmd[[set cmdheight=0]]
 vim.cmd[[set number relativenumber signcolumn=yes]]
 
 
+--vim.cmd[[let g:tpipeline_tabline=1]]
+--vim.cmd[[let g:tpipeline_statusline = '%!tpipeline#stl#line()']]
+--vim.cmd[[set showtabline=0]]
+
+
 --[[
 require("noice").setup({
   lsp = {
