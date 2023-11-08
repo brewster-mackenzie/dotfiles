@@ -9,7 +9,21 @@ telekasten.setup({
 
   -- templates
   template_handling = "prefer_new_note",
-  template_new_note = "note.md",
-  template_new_daily = "daily.md",
+  template_new_note = nil,
+  template_new_daily = home .. '/' .. 'templates' .. '/' .. 'daily.md',
   template_new_weekly = "weekly.md",
 })
+
+function ZkNewNote(note_type)
+  telekasten.setup {
+    home = home .. '/' .. note_type,
+    template_new_note = home .. '/' .. 'templates' .. '/' .. note_type .. '.md',
+  }
+
+  telekasten.new_note()
+
+  telekasten.setup {
+    home = home,
+    template_new_note = nil,
+  }
+end

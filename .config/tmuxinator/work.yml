@@ -36,7 +36,7 @@ root: ~/repos/nimbus-sre
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: editor
+startup_window: code
 
 # Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
 # startup_pane: 1
@@ -48,7 +48,7 @@ windows:
   - notes:
       root: ~/repos/grimoire
       panes:
-        - nvim
+        - nvim +NvimTreeOpen +"Telekasten show_calendar"
   - code:
       root: ~/repos/nimbus-sre
       panes:
