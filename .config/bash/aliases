@@ -1,3 +1,9 @@
+# Setup alias for dotfiles to be managed by git
 alias dotfiles='/usr/bin/git --git-dir=$HOME/repos/dotfiles/ --work-tree=$HOME'
 
-alias la='ls -A'
+# Setup helpful shell aliases
+alias la='ls -A'		# la = list almost all
+alias lla='la -Al'		# lla = list almost all, long format
+alias cls='clear'		# cls = clear screen using Windows command
+
+
