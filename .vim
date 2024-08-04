@@ -1,1 +1,1 @@
-/home/brewster/.config/vim
+.config/vim
