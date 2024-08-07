@@ -1,6 +1,3 @@
-[submodule "repos/dotfiles-submodules/-f"]
-	path = repos/dotfiles-submodules/-f
-	url = https://github.com/w8ste/Tokyonight-rofi-theme.git
 [submodule "repos/dotfiles-submodules/Tokyonight-rofi-theme"]
 	path = repos/dotfiles-submodules/Tokyonight-rofi-theme
 	url = https://github.com/w8ste/Tokyonight-rofi-theme.git
