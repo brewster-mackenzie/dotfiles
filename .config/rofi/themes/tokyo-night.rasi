@@ -1,0 +1,67 @@
+/* Tokyo Night Rofi Theme */
+* {
+    background:      #1a1b26;
+    foreground:      #a9b1d6;
+    border-color:    #414868;
+    border-width:    2px;
+    spacing:         2px;
+    padding:         5px;
+    width:           40%;
+    location:        center;
+    font:            "Noto Sans 12";
+    selected:        #414868;
+}
+
+window {
+    background:      @background;
+    border:          0;
+    padding:         10px;
+}
+
+mainbox {
+    background:      @background;
+    border:          0;
+    padding:         0;
+}
+
+textbox {
+    text-color:      @foreground;
+}
+
+listview {
+    fixed-height:    0;
+    spacing:         2px;
+    scrollbar:       false;
+}
+
+element {
+    background:      @background;
+    border:          0;
+    padding:         5px;
+}
+
+element normal.normal {
+    background:      @background;
+    text-color:      @foreground;
+}
+
+element selected.selected {
+    background:      #414868;
+    text-color:      @foreground;
+}
+
+element urgent.urgent {
+    background:      #f7768e;
+    text-color:      #15161e;
+}
+
+element active.active {
+    background:      #9ece6a;
+    text-color:      #15161e;
+}
+
+entry {
+    background:      @background;
+    text-color:      @foreground;
+    placeholder:     "Type to search...";
+}
