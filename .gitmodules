@@ -4,3 +4,6 @@
 [submodule "repos/Tokyonight-rofi-theme"]
 	path = repos/Tokyonight-rofi-theme
 	url = https://github.com/w8ste/Tokyonight-rofi-theme.git
+[submodule "repos/blu3jive-wallpapers"]
+	path = repos/blu3jive-wallpapers
+	url = https://git.27hs.co.uk/forks/blu3jive-wallpapers.git
