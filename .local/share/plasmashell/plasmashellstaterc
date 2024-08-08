@@ -1,0 +1,5 @@
+[KickerRunnerManager]
+LaunchCounts=1 exec:///usr/bin/kitty -c bash,1 exec:///usr/lib/firefox/firefox,1 krunner_systemsettings_kcm_kwin_virtualdesktops,6 exec:///usr/bin/kitty,1 exec:///usr/bin/kitty -c
+
+[KickerRunnerManager][History]
+0d1c21df-0a29-4f09-a263-9f491d06dc47=DEVICE,kitty,logout,konsole,kitty -c bash,kitty -c,kitt,desktops,firefox
