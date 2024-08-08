@@ -1,6 +1,6 @@
-[submodule "repos/dotfiles-submodules/Tokyonight-rofi-theme"]
-	path = repos/dotfiles-submodules/Tokyonight-rofi-theme
+[submodule "repos/Tokyonight-rofi-theme"]
+	path = repos/Tokyonight-rofi-theme
 	url = https://github.com/w8ste/Tokyonight-rofi-theme.git
-[submodule "/home/brewster/repos/rofi-power-menu"]
-	path = /home/brewster/repos/rofi-power-menu
+[submodule "repos/rofi-power-menu"]
+	path = repos/rofi-power-menu
 	url = https://github.com/jluttine/rofi-power-menu.git
