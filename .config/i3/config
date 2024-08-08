@@ -30,7 +30,7 @@ exec --no-startup-id picom -CGb
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -e --nofork -c 1f2335ff -k --verif-text="verifying" --wrong-text="try again" --inside-color 565f89ff --ring-color=ff9364ff --insidever-color=ff757fff --ringver-color=ff007cff --keyhl-color c53b53ff --bshl-color c53b53ff --insidever-color=9d7cd8ff --insidewrong-color=c53b53ff --layout-color=c3e88dff --time-color=c3e88dff --date-color=c3e88dff --greeter-color=c3e88dff --bar-indicator
+exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.config/i3/i3lock.sh
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
