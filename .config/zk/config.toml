@@ -1,0 +1,5 @@
+[notebook]
+dir = "~/repos/ikew"
+
+[alias]
+find = "zk list -f oneline --match-strategy re --match $@"
