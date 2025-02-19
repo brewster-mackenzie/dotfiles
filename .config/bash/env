@@ -2,4 +2,4 @@ if command -v vim &> /dev/null; then
   EDITOR=vim;
 fi
 
-PATH=$PATH:~/.local/bin
+PATH="$PATH:~/.local/bin:/opt/nvim-linux-x86_64/bin"
