@@ -116,23 +116,15 @@ return require('packer').startup(function(use)
 	  requires = { 'nvim-tree/nvim-web-devicons' },
   }
 
-  use 'folke/tokyonight.nvim'
---  use 'vimpostor/vim-tpipeline'
-  --use {
---	  'folke/noice.nvim',
---	  requires = {
---		  'MunifTanjim/nui.nvim',
---		  'rcarriga/nvim-notify'
---	  }
- -- }
-
-  -- Note taking
-  use { 
-
-	  'renerocksai/telekasten.nvim',
-	  requires = {
-		  'renerocksai/calendar-vim'
-	  }
+  use {
+	  'yorickpeterse/nvim-window',
   }
 
+
+  use 'folke/tokyonight.nvim'
+
+  -- Note taking
+  use {
+	  'zk-org/zk-nvim',
+  }
 end)

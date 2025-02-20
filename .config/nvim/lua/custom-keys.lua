@@ -8,7 +8,30 @@ local cmd_options = {
 	silent = true,
 }
 
-map('n', '<C-b>', [[:NvimTreeToggle<CR>]], cmd_options)
+--map('n', '<C-b>', [[:NvimTreeToggle<CR>]], cmd_options)
+function NvimTreeFocusOrToggle()
+  local api = require('nvim-tree.api')
+  local view = require('nvim-tree.view')
+
+  if not view.is_visible() then
+    -- If NvimTree is closed, open it
+    api.tree.open()
+  elseif view.is_visible() and not api.tree.is_tree_buf(vim.api.nvim_get_current_buf()) then
+    -- If NvimTree is open but not focused, focus it
+    api.tree.focus()
+  else
+    -- If NvimTree is open and focused, close it
+    api.tree.close()
+  end
+end
+
+
+map('n', '<C-b>', [[:lua NvimTreeFocusOrToggle()<CR>]], cmd_options)
+
+-- Window helper
+map('n', '<leader>wh', [[:split<CR>]], cmd_options)
+map('n', '<leader>wv', [[:vsplit<CR>]], cmd_options)
+map('n', '<leader>wj', [[:lua require'nvim-window'.pick()<CR>]], cmd_options)
 
 -- DAP
 map('n', '<F5>', [[:lua require'dap'.continue()<CR>]], cmd_options)
@@ -23,37 +46,10 @@ map('n', "<C-d>", [[:NvimTreeClose<CR> :lua require'dapui'.toggle()<CR>]], cmd_o
 map('n', '<leader>ff', [[:lua require'telescope.builtin'.find_files({no_ignore=true, hidden=true})<CR>]], cmd_options)
 map('n', '<leader>fg', [[:lua require'telescope.builtin'.live_grep()<CR>]], cmd_options)
 
+-- ZK notes
 
-
--- Telekasten notes
-
-function ZkNote(name)
-	input = vim.fn.input("Title: ")
-
-	vim.cmd.normal(vim.api.nvim_replace_termcodes(':Telekasten new_templated_note<CR>' .. input .. '<CR>' .. name .. '.md<CR>' , true, true, true))
-end
-
-map("n", "<leader>z", [[:Telekasten panel<CR>]],cmd_options)
-
-map("n", "<leader>zn", [[:lua ZkNote('note')<CR>]], cmd_options)   
-map("n", "<leader>zk", [[:lua ZkNote('zettel')<CR>]], cmd_options)  
-
-
---map("n", "<leader>zn", [[:Telekasten new_note<CR>notes/]],cmd_options)
---map("n", "<leader>zk", [[:Telekasten new_note<CR>zk/]],cmd_options)
---map("n", "<leader>zr", [[:Telekasten new_note
--- Most used functions
-
-
-
---map("n", "<leader>zf", [[:Telekasten find_notes<CR>]],cmd_options)
---map("n", "<leader>zg", [[:Telekasten search_notes<CR>]],cmd_options)
---map("n", "<leader>zd", [[:Telekasten goto_today<CR>]],cmd_options)
---map("n", "<leader>zz", [[:Telekasten follow_link<CR>]],cmd_options)
---map("n", "<leader>znf", [[:Telekasten new_note<CR>f/]],cmd_options)
---map("n", "<leader>zc", [[:Telekasten show_calendar<CR>]],cmd_options)
---map("n", "<leader>zb", [[:Telekasten show_backlinks<CR>]],cmd_options)
---map("n", "<leader>zI", [[:Telekasten insert_img_link<CR>]],cmd_options)
-
--- Call insert link automatically when we start typing a link
-
+map("n", "<leader>zk", [[:ZkNotes<CR>]], cmd_options)
+map("n", "<leader>zkn", [[:ZkNew<CR>]], cmd_options)
+map("n", "<leader>zkf", [[:ZkNotes<CR>]], cmd_options)
+map("n", "<leader>zkl", [[:ZkInsertLink<CR>]], cmd_options)
+map("n", "<leader>zkL", [[:ZkInsertLinkAtSelection]], cmd_options) 

@@ -1,15 +1,24 @@
-local home = vim.fn.expand("~/repos/grimoire")
-local telekasten = require('telekasten')
-telekasten.setup({
+local zk = require('zk')
+zk.setup({
+  -- Can be "telescope", "fzf", "fzf_lua", "minipick", "snacks_picker",
+  -- or select" (`vim.ui.select`). It's recommended to use "telescope",
+  -- "fzf", "fzf_lua", "minipick", or "snacks_picker".
+  picker = "telescope",
 
-  -- dirnames
-  home = home,
-  dailies = home .. '/' .. 'journal',
-  templates = home .. '/' .. 'templates',
+  lsp = {
+    -- `config` is passed to `vim.lsp.start_client(config)`
+    config = {
+      cmd = { "zk", "lsp" },
+      name = "zk",
+      -- on_attach = ...
+      -- etc, see `:h vim.lsp.start_client()`
+    },
 
-  -- templates
-  template_handling = "prefer_new_note",
-  template_new_note = "note.md",
-  template_new_daily = "daily.md",
-  template_new_weekly = "weekly.md",
+    -- automatically attach buffers in a zk notebook that match the given filetypes
+    auto_attach = {
+      enabled = true,
+      filetypes = { "markdown" },
+    },
+  },
 })
+
