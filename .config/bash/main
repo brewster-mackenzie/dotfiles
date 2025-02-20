@@ -135,3 +135,6 @@ then
   cat $HOME/.cache/wallust/sequences
 fi
 
+if [ -f $HOME/.config/zk/env.sh ]; then
+  . $HOME/.config/zk/env.sh
+fi

@@ -1,5 +1,5 @@
-if command -v vim &> /dev/null; then
-  EDITOR=vim;
+if command -v nvim &> /dev/null; then
+  EDITOR=nvim;
 fi
 
 PATH="$PATH:~/.local/bin:/opt/nvim-linux-x86_64/bin"
