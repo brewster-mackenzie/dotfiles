@@ -8,6 +8,9 @@ local cmd_options = {
 	silent = true,
 }
 
+map('n', '<leader>rm', [[:call delete(@%)<CR>]], cmd_options)
+map('n', '<leader>rM', [[:call delete(@%) | bdelete!<CR>]], cmd_options)
+
 --map('n', '<C-b>', [[:NvimTreeToggle<CR>]], cmd_options)
 function NvimTreeFocusOrToggle()
   local api = require('nvim-tree.api')
@@ -26,7 +29,9 @@ function NvimTreeFocusOrToggle()
 end
 
 
-map('n', '<C-b>', [[:lua NvimTreeFocusOrToggle()<CR>]], cmd_options)
+-- map('n', '<C-b>', [[:lua NvimTreeFocusOrToggle()<CR>]], cmd_options)
+
+map('n', '<C-b>', [[:NnnExplorer<CR>]], cmd_options)
 
 -- Window helper
 map('n', '<leader>wh', [[:split<CR>]], cmd_options)

@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/home/brewster/.local/share/nvim/site/pack/packer/start/bufferline.nvim",
     url = "https://github.com/akinsho/bufferline.nvim"
   },
-  ["calendar-vim"] = {
-    loaded = true,
-    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/calendar-vim",
-    url = "https://github.com/renerocksai/calendar-vim"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/brewster/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -134,6 +129,22 @@ _G.packer_plugins = {
     path = "/home/brewster/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["nnn.nvim"] = {
+    config = { "\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bnnn\frequire\0" },
+    loaded = true,
+    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/nnn.nvim",
+    url = "https://github.com/luukvbaal/nnn.nvim"
+  },
+  ["noice.nvim"] = {
+    loaded = true,
+    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/noice.nvim",
+    url = "https://github.com/folke/noice.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/brewster/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -159,10 +170,10 @@ _G.packer_plugins = {
     path = "/home/brewster/.local/share/nvim/site/pack/packer/start/nvim-nio",
     url = "https://github.com/nvim-neotest/nvim-nio"
   },
-  ["nvim-tree.lua"] = {
+  ["nvim-notify"] = {
     loaded = true,
-    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
-    url = "https://github.com/nvim-tree/nvim-tree.lua"
+    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/nvim-notify",
+    url = "https://github.com/rcarriga/nvim-notify"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -170,9 +181,15 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/brewster/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
+  },
+  ["nvim-window"] = {
     loaded = true,
-    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/nvim-tree/nvim-web-devicons"
+    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/nvim-window",
+    url = "https://github.com/yorickpeterse/nvim-window"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -183,11 +200,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/brewster/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
-  },
-  ["telekasten.nvim"] = {
-    loaded = true,
-    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/telekasten.nvim",
-    url = "https://github.com/renerocksai/telekasten.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
@@ -223,10 +235,19 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/brewster/.local/share/nvim/site/pack/packer/start/which-key.nvim",
     url = "https://github.com/folke/which-key.nvim"
+  },
+  ["zk-nvim"] = {
+    loaded = true,
+    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/zk-nvim",
+    url = "https://github.com/zk-org/zk-nvim"
   }
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: nnn.nvim
+time([[Config for nnn.nvim]], true)
+try_loadstring("\27LJ\2\n1\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\bnnn\frequire\0", "config", "nnn.nvim")
+time([[Config for nnn.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then

@@ -65,12 +65,18 @@ return require('packer').startup(function(use)
   -- Whichkey
   use 'folke/which-key.nvim'
 
-  -- file tree
+--  -- file tree
+--  use {
+--	  'nvim-tree/nvim-tree.lua',
+--	  requires = {
+--		  'nvim-tree/nvim-web-devicons',
+--	  },
+--  }
+
+  -- file tree with nnn
   use {
-	  'nvim-tree/nvim-tree.lua',
-	  requires = {
-		  'nvim-tree/nvim-web-devicons',
-	  },
+	"luukvbaal/nnn.nvim",
+	config = function() require("nnn").setup() end
   }
 
   -- treesitter
@@ -118,6 +124,14 @@ return require('packer').startup(function(use)
 
   use {
 	  'yorickpeterse/nvim-window',
+  }
+
+  use {
+	  'folke/noice.nvim',
+	  requires = {
+		  'MunifTanjim/nui.nvim',
+		  'rcarriga/nvim-notify',
+	  },
   }
 
 

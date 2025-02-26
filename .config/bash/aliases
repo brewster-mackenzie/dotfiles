@@ -3,4 +3,7 @@ alias la='ls -A'		# la = list almost all
 alias lla='la -Al'		# lla = list almost all, long format
 alias cls='clear'		# cls = clear screen using Windows command
 
+# Notes
+
+alias nvn='NOTES_MODE="1" nvim'
 
