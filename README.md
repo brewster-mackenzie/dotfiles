@@ -9,9 +9,11 @@ My Linux dotfiles for:
 - kitty
 - lightdm
 - neofetch
+- neovim
 - polybar
 - ranger
 - rofi
+- tmux
 - vim
 - wallust
 - X11
