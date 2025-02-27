@@ -7,3 +7,6 @@
 [submodule "repos/blu3jive-wallpapers"]
 	path = repos/blu3jive-wallpapers
 	url = https://git.27hs.co.uk/forks/blu3jive-wallpapers.git
+[submodule "/home/brewster/.tmux/plugins/tpm"]
+	path = /home/brewster/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm

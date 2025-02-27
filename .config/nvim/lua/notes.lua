@@ -5,7 +5,7 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 
-local notebook_path = vim.fn.expand("$NOTEBOOK")
+local notebook_path = vim.fn.expand("$NOTES_DIR")
 
 local function sanitize_title(title)
     return title:lower():gsub("%W+", "-")
@@ -42,7 +42,7 @@ local function select_or_create_note(linkMode)
     linkMode = linkMode or 0;
 
     if not notebook_path or notebook_path == "" then
-        vim.notify("ERROR: $NOTEBOOK is not set!", vim.log.levels.ERROR)
+        vim.notify("ERROR: $NOTES_DIR is not set!", vim.log.levels.ERROR)
         return
     end
 

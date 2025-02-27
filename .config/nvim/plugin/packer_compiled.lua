@@ -226,6 +226,11 @@ _G.packer_plugins = {
     path = "/home/brewster/.local/share/nvim/site/pack/packer/start/vim-sleuth",
     url = "https://github.com/tpope/vim-sleuth"
   },
+  ["vim-tpipeline"] = {
+    loaded = true,
+    path = "/home/brewster/.local/share/nvim/site/pack/packer/start/vim-tpipeline",
+    url = "https://github.com/vimpostor/vim-tpipeline"
+  },
   ["vim-vsnip"] = {
     loaded = true,
     path = "/home/brewster/.local/share/nvim/site/pack/packer/start/vim-vsnip",

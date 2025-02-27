@@ -1,7 +1,7 @@
 # /home/bmackenz/.config/tmuxinator/terraform.yml
 
-name: work
-root: ~/repos/nimbus-sre
+name: home
+root: ~/
 
 # Optional tmux socket
 # socket_name: foo
@@ -36,7 +36,7 @@ root: ~/repos/nimbus-sre
 # tmux_command: byobu
 
 # Specifies (by name or index) which window will be selected on project startup. If not set, the first window is used.
-# startup_window: editor
+startup_window: shell
 
 # Specifies (by index) which pane of the specified window will be selected on project startup. If not set, the first pane is used.
 # startup_pane: 1
@@ -46,14 +46,10 @@ root: ~/repos/nimbus-sre
 
 windows:
   - notes:
-      root: ~/repos/grimoire
+      root: ~/repos/ikew
       panes:
-        - nvim
-  - code:
-      root: ~/repos/nimbus-sre
+        - NOTES_DIR="/home/brewster/repos/ikew" NOTES_MODE="1" nvim
+  - shell:
+      root: ~/
       panes:
-        - nvim
-  - dotfiles:
-      root: ~/.config
-      panes:
-        - nvim +NvimTreeOpen
+        - bash

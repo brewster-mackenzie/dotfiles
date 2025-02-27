@@ -134,6 +134,9 @@ return require('packer').startup(function(use)
 	  },
   }
 
+  use { 
+	  'vimpostor/vim-tpipeline',
+  }
 
   use 'folke/tokyonight.nvim'
 
