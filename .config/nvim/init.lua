@@ -17,6 +17,7 @@ require('lsp/lua-language-server')
 require('lsp/tsserver')
 require('lsp/omnisharp')
 require('lsp/terraform-ls')
+require('lsp/powershell_es')
 
 -- DAP Debugging
 require('dap/dap-ui')

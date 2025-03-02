@@ -8,8 +8,11 @@ local cmd_options = {
 	silent = true,
 }
 
+-- delete active file and purge the buffer 
 map('n', '<leader>rm', [[:call delete(@%)<CR>]], cmd_options)
 map('n', '<leader>rM', [[:call delete(@%) | bdelete!<CR>]], cmd_options)
+
+
 
 --map('n', '<C-b>', [[:NvimTreeToggle<CR>]], cmd_options)
 function NvimTreeFocusOrToggle()
@@ -51,10 +54,5 @@ map('n', "<C-d>", [[:NvimTreeClose<CR> :lua require'dapui'.toggle()<CR>]], cmd_o
 map('n', '<leader>ff', [[:lua require'telescope.builtin'.find_files({no_ignore=true, hidden=true})<CR>]], cmd_options)
 map('n', '<leader>fg', [[:lua require'telescope.builtin'.live_grep()<CR>]], cmd_options)
 
--- ZK notes
-
-map("n", "<leader>zk", [[:ZkNotes<CR>]], cmd_options)
-map("n", "<leader>zkn", [[:ZkNew<CR>]], cmd_options)
-map("n", "<leader>zkf", [[:ZkNotes<CR>]], cmd_options)
-map("n", "<leader>zkl", [[:ZkInsertLink<CR>]], cmd_options)
-map("n", "<leader>zkL", [[:ZkInsertLinkAtSelection]], cmd_options) 
+-- Notes
+map('n', '<leader>no', [[:lua require'notes'.select_or_create_note()<CR>]], cmd_options)

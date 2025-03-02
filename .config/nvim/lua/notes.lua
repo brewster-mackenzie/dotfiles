@@ -5,7 +5,20 @@ local actions = require("telescope.actions")
 local action_state = require("telescope.actions.state")
 local conf = require("telescope.config").values
 
-local notebook_path = vim.fn.expand("$NOTES_DIR")
+
+local function get_root() 
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel 2> /dev/null")[1]
+  if git_root then
+      return git_root
+  end
+  return vim.fn.getcwd()
+end
+
+
+local notebook_path = get_root()
+
+
+print("using root " .. notebook_path)
 
 local function sanitize_title(title)
     return title:lower():gsub("%W+", "-")
@@ -55,6 +68,7 @@ local function select_or_create_note(linkMode)
             entry_maker = function(entry)
                 return {
                     value = entry.filename,
+                    basename = vim.fn.fnamemodify(vim.fs.basename(entry.filename), ":r"),
                     display = entry.display,
                     ordinal = entry.display, -- Makes it searchable by title
                 }
@@ -67,6 +81,9 @@ local function select_or_create_note(linkMode)
                 local srow, scol = vim.fn.getpos("'<")[2], vim.fn.getpos("'<")[3]
                 local erow, ecol = vim.fn.getpos("'>")[2], vim.fn.getpos("'>")[3]
 
+                if srow == erow and scol == ecol then
+                    return ""
+                end
 
                 if srow == erow and scol < ecol then
                     ecol = ecol - 1
@@ -89,15 +106,29 @@ local function select_or_create_note(linkMode)
               if srow > erow or (srow == erow and scol > ecol) then
                 return
               end
+
+
+              if srow == erow and scol == ecol then
+                  -- no proper selection?
+
+                  vim.api.nvim_put({ replacement }, "c", true, true)
+                  return
+              end
             
               -- Get the current buffer
               local buf = vim.api.nvim_get_current_buf()
 
             
               -- Replace the selected text
+              print("srow " .. srow .. " scol " .. scol .. " erow " .. erow .. " ecol " .. ecol)
               vim.api.nvim_buf_set_text(buf, srow - 1, scol - 1, erow - 1, ecol , { replacement })
             end
-
+            
+            local function clear_visual_selection()
+                vim.fn.setpos("'<", {0, 0, 0, 0})
+                vim.fn.setpos("'>", {0, 0, 0, 0})
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+            end
             local function update(filename, title, create_new)
                 if create_new then 
                     Path:new(filename):write("# " .. title .. "\n", "w")
@@ -109,10 +140,13 @@ local function select_or_create_note(linkMode)
                     vim.api.nvim_put({ "[[" .. title .. "]]" }, "c", true, true)
                     --vim.cmd("normal i [[" .. title .. "]]")
                 elseif linkMode == 2 then -- replace selected text with link at cursor 
-                    replace_visual_selection("[[" .. title .. "]]")
-                elseif linkMode == 3 then -- replace selected text with linux using selection as alias at cursor 
                     local alias = read_visual_selection()
-                    replace_visual_selection("[[" .. title .. "|" .. alias .. "]]")
+                    if alias == "" then
+                        replace_visual_selection("[[" .. title .. "]]")
+                    else
+                        replace_visual_selection("[[" .. title .. "|" .. alias .. "]]")
+                    end
+                    clear_visual_selection()
                 end
             end
  
@@ -120,7 +154,7 @@ local function select_or_create_note(linkMode)
                 local selection = action_state.get_selected_entry()
                 actions.close(prompt_bufnr)
                 if selection then
-                    update(selection.value, selection.display, false)
+                    update(selection.value, selection.basename, false)
                 end
             end
 
@@ -193,7 +227,6 @@ if os.getenv("NOTES_MODE") == "1" then
             local listed_buffers = vim.fn.getbufinfo({ buflisted = 1 })
             local all_buffers = vim.fn.getbufinfo()
 
-            -- If there are no listed buffers but at least one unlisted buffer (likely "No Name"), trigger prompt
             if #listed_buffers == 1 and #all_buffers > 0 and listed_buffers[1].name == "" then
                 select_or_create_note()
             end
@@ -205,6 +238,8 @@ end
 
 
 return {
-    select_or_create_note = select_or_create_note
+    select_or_create_note = function() select_or_create_note(0) end,
+    insert_link_at_cursor = function() select_or_create_note(1) end,
+    insert_link_at_selection = function() select_or_create_note(2) end
 }
 

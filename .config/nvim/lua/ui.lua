@@ -1,5 +1,8 @@
 vim.cmd[[set cmdheight=0]]
 vim.cmd[[set number relativenumber signcolumn=yes]]
+vim.cmd[[set nowrap]]
+vim.cmd[[set expandtab]]
+vim.cmd[[set tabstop=4]]
 
 
 require("noice").setup({
