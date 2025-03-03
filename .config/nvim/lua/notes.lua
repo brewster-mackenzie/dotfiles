@@ -129,7 +129,7 @@ local function select_or_create_note(linkMode)
                 vim.fn.setpos("'>", {0, 0, 0, 0})
                 vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
             end
-            local function update(filename, title, create_new)
+            local function update(filename, filebasename, title, create_new)
                 if create_new then 
                     Path:new(filename):write("# " .. title .. "\n", "w")
                 end
@@ -137,70 +137,45 @@ local function select_or_create_note(linkMode)
                 if linkMode == 0 then -- standard open & edit
                     vim.cmd("edit " .. filename)
                 elseif linkMode == 1 then -- insert link at cursor
-                    vim.api.nvim_put({ "[[" .. title .. "]]" }, "c", true, true)
+                    vim.api.nvim_put({ "[[" .. filebasename .. "]]" }, "c", true, true)
                     --vim.cmd("normal i [[" .. title .. "]]")
                 elseif linkMode == 2 then -- replace selected text with link at cursor 
                     local alias = read_visual_selection()
                     if alias == "" then
-                        replace_visual_selection("[[" .. title .. "]]")
+                        replace_visual_selection("[[" .. filebasename .. "]]")
                     else
-                        replace_visual_selection("[[" .. title .. "|" .. alias .. "]]")
+                        replace_visual_selection("[[" .. filebasename .. "|" .. alias .. "]]")
                     end
                     clear_visual_selection()
                 end
             end
  
-            local function open_selected()
-                local selection = action_state.get_selected_entry()
-                actions.close(prompt_bufnr)
-                if selection then
-                    update(selection.value, selection.basename, false)
-                end
-            end
 
-            local function create_new_note()
+            local function create_new_note(defaultTitle)
                 actions.close(prompt_bufnr)
-                vim.ui.input({ prompt = "New Note Title: " }, function(title)
+
+                defaultTitle = defaultTitle or ""
+                vim.ui.input({ prompt = "New Note Title: ", default = defaultTitle }, function(title)
                     if not title or title == "" then return end
                     local filebasename = sanitize_title(title)
                     local filename = sanitize_title(title) .. ".md"
 
-                    -- Select or create category
-                    local categories = list_subfolders(notebook_path)
-                    table.insert(categories, "[New Category]")
-
-                    pickers.new({}, {
-                        prompt_title = "Select Category",
-                        finder = finders.new_table(categories),
-                        sorter = conf.generic_sorter({}),
-                        attach_mappings = function(cat_bufnr, map)
-                            local function choose_category()
-                                local cat_selection = action_state.get_selected_entry()
-                                actions.close(cat_bufnr)
-
-                                local category = cat_selection and cat_selection.value or ""
-                                local note_path = ""
-                                if category == "[New Category]" then
-                                    vim.ui.input({ prompt = "New Category: " }, function(new_cat)
-                                        if not new_cat or new_cat == "" then return end
-                                        category = new_cat
-                                        local cat_path = notebook_path .. "/" .. category
-                                        vim.fn.mkdir(cat_path, "p")
-                                        note_path = cat_path .. "/" .. filename
-                                    end)
-                                else
-                                    note_path = notebook_path .. "/" .. category .. "/" .. filename
-                                end
-
-                                update(note_path, filebasename, true)
-                            end
-
-                            map("i", "<CR>", choose_category)
-                            map("n", "<CR>", choose_category)
-                            return true
-                        end
-                    }):find()
+                    update(filename, filebasename, title, true)
                 end)
+            end
+
+            local function open_selected()
+                local selection = action_state.get_selected_entry()
+                if selection then
+                    actions.close(prompt_bufnr)
+                    update(selection.value, selection.basename, selection.display, false)
+                else
+                    local picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
+                    if picker then
+                        local title = picker:_get_prompt()
+                        create_new_note(title)
+                    end
+                end
             end
 
             map("i", "<CR>", open_selected)
