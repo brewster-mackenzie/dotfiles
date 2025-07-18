@@ -151,21 +151,5 @@ return require('packer').startup(function(use)
 
       -- see below for full list of optional dependencies 👇
     },
---    config = function()
---      require("obsidian").setup({
---        workspaces = {
---          {
---            name = "ikew",
---            path = "~/vaults/ikew",
---          },
---          {
---            name = "family",
---            path = "~/vaults/family-vault",
---          },
---        },
---
---        -- see below for full list of options 👇
---    })
---  end,
   })
 end)

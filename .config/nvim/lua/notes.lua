@@ -15,7 +15,7 @@ require"obsidian".setup({
   },
 
   -- Optional, if you keep notes in a specific subdirectory of your vault.
-  notes_subdir = "notes",
+  --notes_subdir = "notes",
 
 
   daily_notes = {
@@ -87,7 +87,7 @@ require"obsidian".setup({
         suffix = suffix .. string.char(math.random(65, 90))
       end
     end
-    return tostring(os.time()) .. "-" .. suffix
+    return tostring(os.date("%Y%m%d%H%M%S")) .. "-" .. suffix
   end,
 
   -- Optional, customize how note file names are generated given the ID, target directory, and title.
