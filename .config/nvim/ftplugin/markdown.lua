@@ -10,6 +10,6 @@
 --}
 
 
-
+vim.opt_local.conceallevel = 2
 local map = vim.api.nvim_set_keymap
 map("i", "[[", [[<ESC>:lua require'notes'.insert_link_at_selection()<CR>]],{})

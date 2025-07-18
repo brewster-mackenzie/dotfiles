@@ -134,9 +134,6 @@ return require('packer').startup(function(use)
 	  },
   }
 
-  use { 
-	  'vimpostor/vim-tpipeline',
-  }
 
   use 'folke/tokyonight.nvim'
 
@@ -144,4 +141,31 @@ return require('packer').startup(function(use)
   use {
 	  'zk-org/zk-nvim',
   }
+
+  use({
+    "epwalsh/obsidian.nvim",
+    tag = "*",  -- recommended, use latest release instead of latest commit
+    requires = {
+      -- Required.
+      "nvim-lua/plenary.nvim",
+
+      -- see below for full list of optional dependencies 👇
+    },
+--    config = function()
+--      require("obsidian").setup({
+--        workspaces = {
+--          {
+--            name = "ikew",
+--            path = "~/vaults/ikew",
+--          },
+--          {
+--            name = "family",
+--            path = "~/vaults/family-vault",
+--          },
+--        },
+--
+--        -- see below for full list of options 👇
+--    })
+--  end,
+  })
 end)

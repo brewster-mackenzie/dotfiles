@@ -3,7 +3,5 @@ require('mason-lspconfig').setup({
   ensure_installed = {
     "marksman",
     "lua_ls",
-    "terraformls",
-    "powershell_es",
   }
 })
