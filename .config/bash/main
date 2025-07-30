@@ -56,21 +56,29 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
+#if [ "$color_prompt" = yes ]; then
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#else
+#    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+#fi
 unset color_prompt force_color_prompt
 
 # If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
+#case "$TERM" in
+#xterm*|rxvt*)
+#    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+#    ;;
+#*)
+#    ;;
+#esac
+
+# Git branch function
+parse_git_branch() {
+  git branch 2>/dev/null | sed -n '/\* /s///p' | sed 's/^/ (/' | sed 's/$/)/'
+}
+
+# Set PS1
+export PS1='\[\e[1;32m\]\w\[\e[0;33m\]$(parse_git_branch)\[\e[0m\] \[\e[1;31m\]$( [[ $EUID -eq 0 ]] && echo "⚠️ " )\[\e[0m\]$ '
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -133,8 +141,4 @@ nginx-enable-site() {
 if command -v wallust &> /dev/null
 then
   cat $HOME/.cache/wallust/sequences
-fi
-
-if [ -f $HOME/.config/zk/env.sh ]; then
-  . $HOME/.config/zk/env.sh
 fi

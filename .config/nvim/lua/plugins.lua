@@ -137,10 +137,15 @@ return require('packer').startup(function(use)
 
   use 'folke/tokyonight.nvim'
 
-  -- Note taking
-  use {
-	  'zk-org/zk-nvim',
-  }
+  use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
+  })
 
   use({
     "epwalsh/obsidian.nvim",

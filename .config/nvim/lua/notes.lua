@@ -1,16 +1,8 @@
 require"obsidian".setup({
   workspaces = {
     {
-      name = "ikew",
-      path = "~/vaults/ikew",
-    },
-    {
-      name = "family",
-      path = "~/vaults/family-vault",
-      -- Optional, override certain settings.
-      --overrides = {
-      --  notes_subdir = "notes",
-      --},
+      name = "khaos-control",
+      path = "~/vaults/khaos-control",
     },
   },
 
@@ -311,3 +303,5 @@ require"obsidian".setup({
     end,
   },
 })
+
+
