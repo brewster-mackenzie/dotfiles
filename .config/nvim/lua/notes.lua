@@ -4,6 +4,10 @@ require"obsidian".setup({
       name = "khaos-control",
       path = "~/vaults/khaos-control",
     },
+    {
+      name = "ikew",
+      path = "~/vaults/ikew",
+    },
   },
 
   -- Optional, if you keep notes in a specific subdirectory of your vault.

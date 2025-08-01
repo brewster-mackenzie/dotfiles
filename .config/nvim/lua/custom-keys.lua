@@ -61,6 +61,6 @@ map('n', '<leader>fg', [[:lua require'telescope.builtin'.live_grep()<CR>]], cmd_
 
 -- Notes
 map('n', '<leader>nn', [[:ObsidianNew<CR>]], cmd_options)
-map('n', '<leader>nf', [[:ObsidianOpen<CR>]], cmd_options)
+map('n', '<leader>nf', [[:ObsidianQuickSwitch<CR>]], cmd_options)
 map('n', '<leader>nj', [[:ObsidianDailies<CR>]], cmd_options)
 map('n', '<leader>nJ', [[:ObsidianToday<CR>]], cmd_options)
